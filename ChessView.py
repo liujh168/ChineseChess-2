@@ -1,4 +1,4 @@
-import Tkinter
+import tkinter
 
 
 def board_coord(x):
@@ -6,13 +6,13 @@ def board_coord(x):
 
 
 class ChessView:
-    root = Tkinter.Tk()
+    root = tkinter.Tk()
     root.title("Chinese Chess")
     root.resizable(0, 0)
-    can = Tkinter.Canvas(root, width=373, height=410)
-    can.pack(expand=Tkinter.YES, fill=Tkinter.BOTH)
-    img = Tkinter.PhotoImage(file="images/WHITE.gif")
-    can.create_image(0, 0, image=img, anchor=Tkinter.NW)
+    can = tkinter.Canvas(root, width=373, height=410)
+    can.pack(expand=tkinter.YES, fill=tkinter.BOTH)
+    img = tkinter.PhotoImage(file="images/WHITE.gif")
+    can.create_image(0, 0, image=img, anchor=tkinter.NW)
     piece_images = dict()
     move_images = []
     def draw_board(self, board):
@@ -20,11 +20,11 @@ class ChessView:
         self.move_images = []
         pieces = board.pieces
         for (x, y) in pieces.keys():
-            self.piece_images[x, y] = Tkinter.PhotoImage(file=pieces[x, y].get_image_file_name())
+            self.piece_images[x, y] = tkinter.PhotoImage(file=pieces[x, y].get_image_file_name())
             self.can.create_image(board_coord(x), board_coord(y), image=self.piece_images[x, y])
         if board.selected_piece:
             for (x, y) in board.selected_piece.get_move_locs(board):
-                self.move_images.append(Tkinter.PhotoImage(file="images/OOS.gif"))
+                self.move_images.append(tkinter.PhotoImage(file="images/OOS.gif"))
                 self.can.create_image(board_coord(x), board_coord(y), image=self.move_images[-1])
     def showMsg(self, msg):
         self.root.title(msg)
@@ -33,4 +33,4 @@ class ChessView:
         self.can.bind('<Button-1>', self.control.callback)
 
     def start(self):
-        Tkinter.mainloop()
+        tkinter.mainloop()

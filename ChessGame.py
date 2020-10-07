@@ -26,7 +26,7 @@ class ChessGame:
         self.view.start()
 
     def callback(self, event):
-        print event.x, event.y
+        print(event.x, event.y) 
         rx, ry = real_coord(event.x), real_coord(event.y)
         if self.board.select(rx, ry, self.player_is_red):
             self.player_is_red = not self.player_is_red
