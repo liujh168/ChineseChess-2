@@ -23,7 +23,7 @@ class Pao(ChessPiece):
             return False
         nx, ny = self.x + dx, self.y + dy
         cnt = self.count_pieces(board, self.x, self.y, dx, dy)
-        print 'cnt',cnt
+        print ('cnt',cnt)
         if (nx, ny) not in board.pieces:
             if cnt!= 0:
                 #print 'blocked'
